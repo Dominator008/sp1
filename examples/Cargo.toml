@@ -3,6 +3,7 @@ members = [
   "aggregation/script",
   "chess/script",
   "cycle-tracking/script",
+  "empty/script",
   "fibonacci/script",
   "io/script",
   "is-prime/script",

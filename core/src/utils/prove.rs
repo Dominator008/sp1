@@ -466,23 +466,39 @@ pub mod baby_bear_poseidon2 {
         )
     }
 
-    pub fn default_fri_config() -> FriConfig<ChallengeMmcs> {
+    pub fn core_fri_config() -> FriConfig<ChallengeMmcs> {
         let perm = my_perm();
         let hash = MyHash::new(perm.clone());
         let compress = MyCompress::new(perm.clone());
         let challenge_mmcs = ChallengeMmcs::new(ValMmcs::new(hash, compress));
         let num_queries = match std::env::var("FRI_QUERIES") {
             Ok(value) => value.parse().unwrap(),
-            Err(_) => 100,
+            Err(_) => 25,
         };
         FriConfig {
-            log_blowup: 1,
+            log_blowup: 4,
             num_queries,
             proof_of_work_bits: 16,
             mmcs: challenge_mmcs,
         }
     }
 
+    pub fn inner_fri_config() -> FriConfig<ChallengeMmcs> {
+        let perm = my_perm();
+        let hash = MyHash::new(perm.clone());
+        let compress = MyCompress::new(perm.clone());
+        let challenge_mmcs = ChallengeMmcs::new(ValMmcs::new(hash, compress));
+        let num_queries = match std::env::var("FRI_QUERIES") {
+            Ok(value) => value.parse().unwrap(),
+            Err(_) => 50,
+        };
+        FriConfig {
+            log_blowup: 2,
+            num_queries,
+            proof_of_work_bits: 16,
+            mmcs: challenge_mmcs,
+        }
+    }
     pub fn compressed_fri_config() -> FriConfig<ChallengeMmcs> {
         let perm = my_perm();
         let hash = MyHash::new(perm.clone());
@@ -501,7 +517,8 @@ pub mod baby_bear_poseidon2 {
     }
 
     enum BabyBearPoseidon2Type {
-        Default,
+        Core,
+        Inner,
         Compressed,
     }
 
@@ -520,12 +537,27 @@ pub mod baby_bear_poseidon2 {
             let compress = MyCompress::new(perm.clone());
             let val_mmcs = ValMmcs::new(hash, compress);
             let dft = Dft {};
-            let fri_config = default_fri_config();
+            let fri_config = core_fri_config();
             let pcs = Pcs::new(27, dft, val_mmcs, fri_config);
             Self {
                 pcs,
                 perm,
-                config_type: BabyBearPoseidon2Type::Default,
+                config_type: BabyBearPoseidon2Type::Core,
+            }
+        }
+
+        pub fn inner() -> Self {
+            let perm = my_perm();
+            let hash = MyHash::new(perm.clone());
+            let compress = MyCompress::new(perm.clone());
+            let val_mmcs = ValMmcs::new(hash, compress);
+            let dft = Dft {};
+            let fri_config = inner_fri_config();
+            let pcs = Pcs::new(27, dft, val_mmcs, fri_config);
+            Self {
+                pcs,
+                perm,
+                config_type: BabyBearPoseidon2Type::Inner,
             }
         }
 
@@ -548,7 +580,8 @@ pub mod baby_bear_poseidon2 {
     impl Clone for BabyBearPoseidon2 {
         fn clone(&self) -> Self {
             match self.config_type {
-                BabyBearPoseidon2Type::Default => Self::new(),
+                BabyBearPoseidon2Type::Core => Self::new(),
+                BabyBearPoseidon2Type::Inner => Self::inner(),
                 BabyBearPoseidon2Type::Compressed => Self::compressed(),
             }
         }

@@ -141,11 +141,11 @@ impl SP1Prover {
     /// Initializes a new [SP1Prover].
     #[instrument(name = "initialize prover", level = "debug", skip_all)]
     pub fn new() -> Self {
-        let core_machine = RiscvAir::machine(CoreSC::default());
+        let core_machine = RiscvAir::machine(CoreSC::new());
 
         // Get the recursive verifier and setup the proving and verifying keys.
         let recursion_program = SP1RecursiveVerifier::<InnerConfig, _>::build(&core_machine);
-        let compress_machine = ReduceAir::machine(InnerSC::default());
+        let compress_machine = ReduceAir::machine(InnerSC::inner());
         let (rec_pk, rec_vk) = compress_machine.setup(&recursion_program);
 
         // Get the deferred program and keys.
@@ -237,7 +237,7 @@ impl SP1Prover {
         pk: &SP1ProvingKey,
         stdin: &SP1Stdin,
     ) -> Result<SP1CoreProof, SP1CoreProverError> {
-        let config = CoreSC::default();
+        let config = CoreSC::new();
         let program = Program::from(&pk.elf);
         let opts = SP1CoreOpts::default();
         let (proof, public_values_stream) = sp1_core::utils::prove(program, stdin, config, opts)?;
