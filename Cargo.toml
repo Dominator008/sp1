@@ -2,11 +2,18 @@
 members = [
   "cli",
   "core",
+  "custom",
+  "custom-prover",
   "derive",
   "eval",
   "helper",
   "primitives",
   "prover",
+  "custom-recursion/circuit",
+  "custom-recursion/compiler",
+  "custom-recursion/core",
+  "custom-recursion/gnark-ffi",
+  "custom-recursion/program",
   "recursion/circuit",
   "recursion/compiler",
   "recursion/core",
@@ -51,7 +58,7 @@ p3-uni-stark = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3b5265f9
 p3-maybe-rayon = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3b5265f9d5af36534a46caebf0617595cfb42c5a" }
 p3-bn254-fr = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3b5265f9d5af36534a46caebf0617595cfb42c5a" }
 
-# For local development. 
+# For local development.
 
 # p3-air = { path = "../Plonky3/air" }
 # p3-field = { path = "../Plonky3/field" }

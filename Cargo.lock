@@ -4655,6 +4655,243 @@ dependencies = [
 ]
 
 [[package]]
+name = "sp1-custom"
+version = "0.1.0"
+dependencies = [
+ "arrayref",
+ "backtrace",
+ "bincode",
+ "ff 0.13.0",
+ "hashbrown 0.14.5",
+ "itertools 0.13.0",
+ "p3-air",
+ "p3-baby-bear",
+ "p3-blake3",
+ "p3-bn254-fr",
+ "p3-challenger",
+ "p3-commit",
+ "p3-dft",
+ "p3-field",
+ "p3-fri",
+ "p3-keccak",
+ "p3-matrix",
+ "p3-maybe-rayon",
+ "p3-merkle-tree",
+ "p3-poseidon2",
+ "p3-symmetric",
+ "p3-uni-stark",
+ "p3-util",
+ "rand",
+ "serde",
+ "serde_with",
+ "size",
+ "sp1-core",
+ "sp1-derive",
+ "sp1-primitives",
+ "static_assertions",
+ "tempfile",
+ "thiserror",
+ "tracing",
+ "web-time",
+ "zkhash",
+]
+
+[[package]]
+name = "sp1-custom-prover"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "backtrace",
+ "bincode",
+ "clap",
+ "dirs",
+ "futures",
+ "hex",
+ "indicatif",
+ "itertools 0.13.0",
+ "num-bigint 0.4.5",
+ "p3-baby-bear",
+ "p3-bn254-fr",
+ "p3-challenger",
+ "p3-commit",
+ "p3-field",
+ "p3-util",
+ "rand",
+ "rayon",
+ "reqwest 0.12.4",
+ "serde",
+ "serde_json",
+ "serial_test",
+ "sha2",
+ "size",
+ "sp1-core",
+ "sp1-custom",
+ "sp1-custom-recursion-circuit",
+ "sp1-custom-recursion-compiler",
+ "sp1-custom-recursion-core",
+ "sp1-custom-recursion-gnark-ffi",
+ "sp1-custom-recursion-program",
+ "sp1-primitives",
+ "subtle-encoding",
+ "tempfile",
+ "thiserror",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "sp1-custom-recursion-circuit"
+version = "0.1.0"
+dependencies = [
+ "bincode",
+ "ff 0.13.0",
+ "itertools 0.13.0",
+ "p3-air",
+ "p3-baby-bear",
+ "p3-bn254-fr",
+ "p3-challenger",
+ "p3-commit",
+ "p3-dft",
+ "p3-field",
+ "p3-fri",
+ "p3-matrix",
+ "p3-merkle-tree",
+ "p3-poseidon2",
+ "p3-symmetric",
+ "p3-util",
+ "rand",
+ "serde",
+ "sp1-core",
+ "sp1-custom-recursion-compiler",
+ "sp1-custom-recursion-core",
+ "sp1-custom-recursion-derive",
+ "sp1-custom-recursion-gnark-ffi",
+ "sp1-custom-recursion-program",
+ "zkhash",
+]
+
+[[package]]
+name = "sp1-custom-recursion-compiler"
+version = "0.1.0"
+dependencies = [
+ "backtrace",
+ "itertools 0.13.0",
+ "p3-air",
+ "p3-baby-bear",
+ "p3-bn254-fr",
+ "p3-challenger",
+ "p3-commit",
+ "p3-dft",
+ "p3-field",
+ "p3-fri",
+ "p3-matrix",
+ "p3-merkle-tree",
+ "p3-poseidon2",
+ "p3-symmetric",
+ "p3-util",
+ "rand",
+ "serde",
+ "sp1-core",
+ "sp1-custom-recursion-core",
+ "sp1-custom-recursion-derive",
+ "tracing",
+]
+
+[[package]]
+name = "sp1-custom-recursion-core"
+version = "0.1.0"
+dependencies = [
+ "arrayref",
+ "backtrace",
+ "ff 0.13.0",
+ "hashbrown 0.14.5",
+ "itertools 0.13.0",
+ "p3-air",
+ "p3-baby-bear",
+ "p3-bn254-fr",
+ "p3-challenger",
+ "p3-commit",
+ "p3-dft",
+ "p3-field",
+ "p3-fri",
+ "p3-matrix",
+ "p3-maybe-rayon",
+ "p3-merkle-tree",
+ "p3-poseidon2",
+ "p3-symmetric",
+ "p3-util",
+ "rand",
+ "serde",
+ "serde_with",
+ "sp1-core",
+ "sp1-custom",
+ "sp1-derive",
+ "sp1-primitives",
+ "static_assertions",
+ "tracing",
+ "zkhash",
+]
+
+[[package]]
+name = "sp1-custom-recursion-derive"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "sp1-custom-recursion-gnark-ffi"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "bincode",
+ "bindgen",
+ "cc",
+ "cfg-if",
+ "log",
+ "num-bigint 0.4.5",
+ "p3-baby-bear",
+ "p3-field",
+ "p3-symmetric",
+ "rand",
+ "serde",
+ "serde_json",
+ "sp1-core",
+ "sp1-custom-recursion-compiler",
+ "tempfile",
+]
+
+[[package]]
+name = "sp1-custom-recursion-program"
+version = "0.1.0"
+dependencies = [
+ "itertools 0.13.0",
+ "p3-air",
+ "p3-baby-bear",
+ "p3-challenger",
+ "p3-commit",
+ "p3-dft",
+ "p3-field",
+ "p3-fri",
+ "p3-matrix",
+ "p3-maybe-rayon",
+ "p3-merkle-tree",
+ "p3-poseidon2",
+ "p3-symmetric",
+ "p3-util",
+ "rand",
+ "serde",
+ "sp1-core",
+ "sp1-custom",
+ "sp1-custom-recursion-compiler",
+ "sp1-custom-recursion-core",
+ "tracing",
+]
+
+[[package]]
 name = "sp1-derive"
 version = "0.1.0"
 dependencies = [
